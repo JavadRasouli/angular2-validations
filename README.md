@@ -26,8 +26,8 @@ import {AngularValidations} from 'angular2-validations'
 
 ## Available validations
 
-* [`AngularValidations`](./doc/AngularValidationsModule.md)
 * [`blackList`](./doc/blackListValidation.md)
+* [`remoteValidation`](./doc/remoteValidation.md)
 
 ## License
 

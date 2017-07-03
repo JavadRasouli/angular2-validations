@@ -1,4 +1,4 @@
-import { Directive, forwardRef, Attribute } from '@angular/core';
+import { Directive, forwardRef, Input } from '@angular/core';
 import { Validator, AbstractControl, NG_VALIDATORS } from '@angular/forms';
 @Directive({
     selector: '[blackList][formControlName],[blackList][formControl],[blackList][ngModel]',
@@ -7,19 +7,16 @@ import { Validator, AbstractControl, NG_VALIDATORS } from '@angular/forms';
     ]
 })
 export class BlackListValidation implements Validator {
-    constructor(
-        @Attribute('blackList')
-        public blackList: string
-    ) { }
+
+    @Input('blackList') blackList: Array<any>;
+
+    constructor() { }
 
     validate(elem: AbstractControl): { [key: string]: any } {
         let value = elem.value;
-        let blacklist = this.blackList.split(',');
 
-        if(blacklist.indexOf(value.toString()) !== -1)
-        return {
-            blackList: false
-        }
+        if (this.blackList.indexOf(value != undefined ? value.toString() : value) !== -1)
+            return { blackList: true };
         return null;
     }
 }
