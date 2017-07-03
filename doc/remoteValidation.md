@@ -6,7 +6,7 @@ This directive will check the ngModel property value is valid on server-side pol
 
 ###### In this code sample, remoteValidation directive check userName is Valid or not. if server side code is similar to flowing code, you can use this html tags. 
 
-###### c# code
+###### server-side code
 
 ```c#
 [HttpGet("users/{userName}/IsValid")]
@@ -44,6 +44,8 @@ public IActionResult UserIsValid(string userName)
 
 ##### If you want to send an additional parameter or set http header, you can use the 'requestOptions' attribute. this attribute take template expersion from 'RequestOptions' type.
 
+###### server-side code.
+
 ```c#
 public class Extra
 {
@@ -58,6 +60,7 @@ public IActionResult UserIsValid(string userName, [FromQuery]Extra extra)
     return Ok(false);
 }
 ```
+###### AppComponent
 
 ```typescript
 import { Component } from '@angular/core';
@@ -84,6 +87,7 @@ export class AppComponent {
   }
 }
 ```
+###### html tags
 
 ```html
 <div class="form-group" [class.has-error]="userName.invalid">
